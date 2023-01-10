@@ -21,7 +21,7 @@
 /*--------head------------*/
 /*--------header------------*/
 header {
-  background-color: rgba(255, 255, 255, 0.2);
+  /* background-color: rgba(255, 255, 255, 0.2); */
   margin: 0 30px;
 }
 header .nav {
@@ -39,10 +39,10 @@ header ul li a {
   transition: 0.5s;
 }
 header ul li a:hover {
-  color: #1eb2a6;
+  color: red;
 }
 .start {
-  background-color: #05000a;
+  background-color: blue;
   /* background-color: #1eb2a6; */
   padding: 30px 70px;
   color: #fff;
@@ -63,7 +63,7 @@ header ul li a:hover {
   }
   header {
     margin: 0;
-    background-color: #05000a;
+    background-color: blue;
     /* background-color: #1eb2a6; */
     position: relative;
   }
@@ -88,7 +88,7 @@ header ul li a:hover {
     top: 7vh;
     left: 0;
     width: 100%;
-    background-color: #05000a;
+    background-color: blue;
     /* background-color: #1eb2a6; */
   }
 }
@@ -96,9 +96,18 @@ header ul li a:hover {
   .start {
     clip-path: none;
   }
+  .flexSB ul {
+    text-align: center;
+    align-items: center;
+    line-height: 50px;
+    font-size: larger;
+  }
+  .flexSB ul li:hover {
+    color: red;
+  }
   header {
     margin: 0;
-    background-color: #05000a;
+    background-color: blue;
     /* background-color: #1eb2a6; */
     position: relative;
   }
@@ -122,7 +131,8 @@ header ul li a:hover {
     top: 7vh;
     left: 0;
     width: 100%;
-    background-color: #05000a;
+    background-color: blue;
+
     /* background-color: #1eb2a6; */
   }
 }

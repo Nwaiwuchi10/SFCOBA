@@ -1,6 +1,7 @@
 .about {
   padding: 6rem 3rem 5rem 3rem;
-  background: #f8f8f8;
+  background: white;
+  /* background: #f8f8f8; */
 }
 .row {
   display: flex;
@@ -45,7 +46,7 @@
   display: block;
 }
 .active-tab {
-  background: #05000a;
+  background: blue;
   /* position: absolute; */
 }
 .active-tab::before {

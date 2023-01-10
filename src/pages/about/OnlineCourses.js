@@ -2,18 +2,23 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Col, Image } from "react-bootstrap";
 
-import { online } from "../../dummydata";
+import Loader from "../../components/Loading/Loader";
+import Message from "../../components/Message/Message";
 // import "./Allcourses.css";
 import "./Online.css";
 const OnlineCourses = () => {
   const [poster, setPoster] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(true);
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get("http://localhost:5000/api/hallfame/");
+      const { data } = await axios.get(
+        "https://sfcoba.herokuapp.com/api/hallfame/"
+      );
       console.log(data);
       setPoster(data);
-      // setLoading(false);
-      // setError(false);
+      setLoading(false);
+      setError(false);
 
       // localStorage.setItem("PostId", JSON.stringify(data));
     };
@@ -25,47 +30,54 @@ const OnlineCourses = () => {
       <section class="section">
         <div class="container">
           <div className="text-center ht">Hall Of Fame</div>
-          <div className="row kj">
-            {/* <div class="section_content teamy-team"> */}
-            {poster?.map((val) => (
-              <div class="col-md-3 mb-5 ">
-                <div class="teamy teamy_style1 teamy_mask-circle">
-                  <div class="teamy_layout">
-                    <div class="teamy_preview">
-                      {" "}
-                      <img
-                        thumbnail
-                        src={val.imagePortrait}
-                        class="teamy_avatar"
-                        alt="The demo photo"
-                      />{" "}
-                    </div>
-                    <div class="teamy_back">
-                      <div
-                        class="teamy_back-inner"
-                        style={{ fontSize: "medium", fontWeight: "600" }}
-                      >
-                        <h3>Acknowledgement</h3>We the SFCOBA's are grateful to
-                        you & those who has the pleasure to work for the school
-                        in related projects. Each of the members of my
-                        Dissertation Committee has provided me extensive
-                        personal and professional guidance and taught me a great
-                        deal about both scientific research and life in general.
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">Failed</Message>
+          ) : (
+            <div className="row kj">
+              {/* <div class="section_content teamy-team"> */}
+              {poster?.map((val) => (
+                <div class="col-md-3 mb-5 ">
+                  <div class="teamy teamy_style1 teamy_mask-circle">
+                    <div class="teamy_layout">
+                      <div class="teamy_preview">
+                        {" "}
+                        <img
+                          thumbnail
+                          src={val.imagePortrait}
+                          class="teamy_avatar"
+                          alt="The demo photo"
+                        />{" "}
+                      </div>
+                      <div class="teamy_back">
+                        <div
+                          class="teamy_back-inner"
+                          style={{ fontSize: "medium", fontWeight: "600" }}
+                        >
+                          <h3>Acknowledgement</h3>We the SFCOBA's are grateful
+                          to you & those who has the pleasure to work for the
+                          school in related projects. Each of the members of my
+                          Dissertation Committee has provided me extensive
+                          personal and professional guidance and taught me a
+                          great deal about both scientific research and life in
+                          general.
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="teamy_content " thumbnail>
-                    <h3 class="teamy_name">{val.name}</h3>
-                    <h3 class="teamy_name">{val.yearofGraduation}</h3>
-                    <span class="teamy_post">
-                      {val.significantContribution}
-                    </span>{" "}
+                    <div class="teamy_content " thumbnail>
+                      <h3 class="teamy_name">{val.name}</h3>
+                      <h3 class="teamy_name">{val.yearofGraduation}</h3>
+                      <span class="teamy_post">
+                        {val.significantContribution}
+                      </span>{" "}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-            {/* </div> */}
-          </div>
+              ))}
+              {/* </div> */}
+            </div>
+          )}
         </div>
       </section>
       {/* <section className="online">

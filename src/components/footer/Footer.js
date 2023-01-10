@@ -7,12 +7,12 @@ const Footer = () => {
         {/* <!-- Footer --> */}
         <footer
           class="text-center text-lg-start text-dark"
-          style={{ backgroundColor: "#ECEFF1" }}
+          style={{ backgroundColor: "white" }}
         >
           {/* <!-- Section: Social media --> */}
           <section
             class="d-flex justify-content-between p-4 text-white"
-            style={{ backgroundColor: "#05000a" }}
+            style={{ backgroundColor: "blue" }}
           >
             {/* <!-- Left --> */}
             <div class="me-5">
@@ -173,7 +173,7 @@ const Footer = () => {
           {/* <!-- Section: Links  --> */}
 
           {/* <!-- Copyright --> */}
-          <div class="text-center p-3" style={{ backgroundColor: "#ECEFF1" }}>
+          <div class="text-center p-3" style={{ backgroundColor: "white" }}>
             © 2022 Copyright:
             <a class="text-dark">SFCOBA</a>
           </div>
