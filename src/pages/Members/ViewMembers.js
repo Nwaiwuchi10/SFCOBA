@@ -10,7 +10,9 @@ const ViewMembers = () => {
   const [error, setError] = useState(true);
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get("http://localhost:5000/api/users");
+      const { data } = await axios.get(
+        "https://sfcoba.herokuapp.com/api/users"
+      );
       console.log(data);
       setPoster(data);
       setLoading(false);

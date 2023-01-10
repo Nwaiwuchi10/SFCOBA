@@ -1,5 +1,5 @@
 import { Box, TextField } from "@mui/material";
-
+import Sfc from "../../assets/images/Sfc.jpg";
 import "./Register.css";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -95,7 +95,7 @@ const Register = () => {
     };
 
     axios
-      .post("http://localhost:5000/api/auth/register", data, headers)
+      .post("https://sfcoba.herokuapp.com/api/auth/register", data, headers)
 
       .then((res) => {
         console.log(res.data);
@@ -153,11 +153,13 @@ const Register = () => {
             <div class="col-lg-8 col-xl-6">
               <div class="card rounded-3">
                 <img
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
+                  src={Sfc}
                   class="w-100"
                   style={{
                     borderTopLeftRadius: ".3rem",
                     borderTopRightRadius: ".3rem",
+                    height: "20vh",
+                    objectFit: "contain",
                   }}
                   alt="Sample photo"
                 />
