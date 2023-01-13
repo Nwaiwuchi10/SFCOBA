@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import sdr from "../../assets/images/sdr.png";
 import Nav from "./Nav";
 import Sfc from "../../assets/images/Sfc.jpg";
 import "./Nav.css";
@@ -19,24 +20,30 @@ const NavBar = () => {
             </li>
 
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/about">BroadCast</Link>
             </li>
             <li>
               <Link to="/team">Team</Link>
             </li>
 
             <li>
-              <Link to="/journal">Journal</Link>
+              <Link to="/journal">Calender</Link>
             </li>
             <li>
-              <Link to="/contact">Contact</Link>
+              <Link to="/contact">Contact Us</Link>
             </li>
             <li>
-              <Link to="/courses">Join Us</Link>
+              <Link to="/login">Login</Link>
             </li>
           </ul>
           <div className="start">
-            <div className="button">SFCOBA</div>
+            <div className="button">
+              <img
+                src={sdr}
+                alt="khhd"
+                style={{ width: "100%", height: "8vh", objectFit: "contain" }}
+              />
+            </div>
           </div>
           <button className="toggle" onClick={() => setClick(!click)}>
             {click ? (

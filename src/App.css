@@ -4,11 +4,10 @@
   box-sizing: border-box;
   font-family: "Roboto Slab";
 }
-body {
+/* body {
   font-family: "Roboto Slab";
   background: white;
-  /* background-color: #f8f8f8; */
-}
+} */
 /*------------global-----------*/
 .flexSB {
   display: flex;
@@ -27,12 +26,12 @@ p {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.3);
   /* color: #1eb2a6; */
-  color: blue;
+  color: #0000cd;
   transition: 0.5s;
 }
 .icon:hover {
   cursor: pointer;
-  background-color: blue;
+  background-color: #0000cd;
   /* background-color: #1eb2a6; */
   color: #fff;
 }
@@ -48,7 +47,7 @@ li {
 button {
   padding: 17px 30px;
   background-color: #fff;
-  color: blue;
+  color: #0000cd;
   /* color: #05000a; */
   /* color: #1eb2a6; */
   font-weight: 600;
@@ -66,7 +65,7 @@ button:hover {
   box-shadow: none;
 }
 .primary-btn {
-  background-color: blue;
+  background-color: #0000cd;
   /* background-color: #1eb2a6; */
   color: #fff;
 }
@@ -113,12 +112,12 @@ button:hover {
 .outline-btn {
   margin: 0;
   box-shadow: none;
-  border: 2px solid blue;
+  border: 2px solid #0000cd;
   width: 100%;
   transition: 0.5s;
 }
 .outline-btn:hover {
-  background-color: blue;
+  background-color: #0000cd;
   /* background-color: #1eb2a6; */
   color: #fff;
 }
@@ -168,7 +167,7 @@ button:hover {
   #heading h3 {
     font-weight: 600;
     letter-spacing: 1px;
-    color: blue;
+    color: #0000cd;
     /* color: #1eb2a6; */
     text-transform: uppercase;
 
@@ -191,7 +190,7 @@ button:hover {
   #heading h3 {
     font-weight: 600;
     letter-spacing: 1px;
-    color: blue;
+    color: #0000cd;
     /* color: #1eb2a6; */
     text-transform: uppercase;
 

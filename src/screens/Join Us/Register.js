@@ -20,6 +20,8 @@ import FormControl from "@mui/material/FormControl";
 import FileBase64 from "react-file-base64";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import NavBar from "../../components/Header/NavBar";
+import Footer from "../../components/footer/Footer";
 const Register = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -147,7 +149,14 @@ const Register = () => {
   };
   return (
     <div>
-      <section class="h-100 h-custom" style={{ backgroundColor: "white" }}>
+      <NavBar />
+      <section
+        class="h-100 h-custom"
+        style={{
+          backgroundColor: "white",
+          paddingTop: "50px",
+        }}
+      >
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-lg-8 col-xl-6">
@@ -460,13 +469,13 @@ const Register = () => {
                       type="submit"
                       class="btn btn-primary btn-lg mb-1 "
                       style={{
-                        background: "blue",
+                        background: "#0000CD",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                       }}
                     >
-                      Submit
+                      Register
                     </button>
                     <ToastContainer />
                   </form>
@@ -476,6 +485,7 @@ const Register = () => {
           </div>
         </div>
       </section>
+      <Footer />
     </div>
   );
 };

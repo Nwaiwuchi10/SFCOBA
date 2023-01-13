@@ -46,7 +46,7 @@
   display: block;
 }
 .active-tab {
-  background: blue;
+  background: #0000cd;
   /* position: absolute; */
 }
 .active-tab::before {

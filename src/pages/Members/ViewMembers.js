@@ -4,6 +4,8 @@ import "./ViewMember.css";
 import piccy from "../../assets/images/piccy.jpg";
 import Loader from "../../components/Loading/Loader";
 import Message from "../../components/Message/Message";
+import NavBar from "../../components/Header/NavBar";
+import Footer from "../../components/footer/Footer";
 const ViewMembers = () => {
   const [poster, setPoster] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -25,7 +27,8 @@ const ViewMembers = () => {
   }, []);
   return (
     <div>
-      <div class="container text-center  mb-2">
+      <NavBar />
+      <div class="container text-center  mb-2 mt-5">
         <h3 class="mb-0 ">SFCOBA MEMEBRS</h3>
         <span></span>
       </div>
@@ -91,6 +94,7 @@ const ViewMembers = () => {
           </div>
         </div>
       )}
+      <Footer />
     </div>
   );
 };

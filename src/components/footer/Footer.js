@@ -12,7 +12,7 @@ const Footer = () => {
           {/* <!-- Section: Social media --> */}
           <section
             class="d-flex justify-content-between p-4 text-white"
-            style={{ backgroundColor: "blue" }}
+            style={{ backgroundColor: "#0000CD" }}
           >
             {/* <!-- Left --> */}
             <div class="me-5">

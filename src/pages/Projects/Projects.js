@@ -3,15 +3,15 @@ import axios from "axios";
 import Loader from "../../components/Loading/Loader";
 import Message from "../../components/Message/Message";
 // import { blog } from "../../dummydata";
-import "./Blog.css";
-const Blog = () => {
+import "../blog/Blog.css";
+const Projects = () => {
   const [poster, setPoster] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(true);
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        "https://sfcoba.herokuapp.com/api/posts/"
+        "https://sfcoba.herokuapp.com/api/projects/"
       );
       console.log(data);
       setPoster(data);
@@ -28,7 +28,7 @@ const Blog = () => {
       <section className="blog">
         <div className="container">
           {/* <Heading subtitle='OUR BLOG' title='Recent From Blog' /> */}
-          <div className="text-center ht">Latest News</div>
+          <div className="text-center ht">Projects</div>
           {loading ? (
             <Loader />
           ) : error ? (
@@ -42,7 +42,10 @@ const Blog = () => {
                     <img src={val.image} alt="" />
                   </div>
                   <div className="text">
-                    <h1>{val.title}</h1>
+                    <h4 style={{ fontWeight: "600" }}>{val.projectTitle}</h4>
+                    <h4 style={{ fontWeight: "600" }}>
+                      Project Done by {val.classOf}
+                    </h4>
                     <p>{val.content}</p>
                   </div>
                 </div>
@@ -55,4 +58,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default Projects;

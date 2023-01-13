@@ -6,17 +6,20 @@ import Blog from "../blog/Blog";
 import Hero from "../hero/Hero";
 import Price from "../price/Price";
 import Testimony from "../testimony/Testimony";
+import Projects from "../Projects/Projects";
+import NavBar from "../../components/Header/NavBar";
 
 const HomePage = () => {
   return (
     <div>
+      <NavBar />
       <Hero />
       <About />
 
       <Blog />
       <OnlineCourses />
-      {/* <Price /> */}
-      {/* <Testimony /> */}
+      <Projects />
+      <Footer />
     </div>
   );
 };
