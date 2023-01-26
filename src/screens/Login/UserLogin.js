@@ -69,6 +69,7 @@ const UserLogin = () => {
           setPassword("");
           localStorage.setItem("token", data.token);
           localStorage.setItem("userId", res.data._id);
+          localStorage.setItem("ProfilePic", res.data.profilePic);
           localStorage.setItem("isAdmin", res.data.isAdmin);
           localStorage.setItem("firstName", res.data?.firstName);
           localStorage.setItem("secondName", res.data.secondName);

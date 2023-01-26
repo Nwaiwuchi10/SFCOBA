@@ -1,7 +1,9 @@
-import { Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import AdminCreateBroadcast from "./AdminScreens/AdminAnnouncement/AdminCreateBroadcast";
 import AdminGetBroadcast from "./AdminScreens/AdminAnnouncement/AdminGetBroadcast";
 import UpdateBroadcast from "./AdminScreens/AdminAnnouncement/UpdateBroadcast";
+import AdminProfiler from "./AdminScreens/AdminDashboard/AdminProfiler";
 import AdminCreateHallOfFame from "./AdminScreens/AdminHallOfFame/AdminCreateHallOfFame";
 import AdminGetHallOfFame from "./AdminScreens/AdminHallOfFame/AdminGetHallOfFame";
 import UpdateHallOfFame from "./AdminScreens/AdminHallOfFame/UpdateHallOfFame";
@@ -9,6 +11,7 @@ import AdminCreateNews from "./AdminScreens/AdminNewsBlog/AdminCreateNews";
 import AdminViewNews from "./AdminScreens/AdminNewsBlog/AdminViewNews";
 import UpdateNewsBlog from "./AdminScreens/AdminNewsBlog/UpdateNewsBlog";
 import AdminProfile from "./AdminScreens/AdminProfile/AdminProfile";
+
 import AdminCreateProject from "./AdminScreens/AdminProject/AdminCreateProject";
 import AdminViewProjects from "./AdminScreens/AdminProject/AdminViewProject";
 import UpdateProject from "./AdminScreens/AdminProject/UpateProject";
@@ -35,6 +38,18 @@ import UserAccount from "./UserDashBoard/UserAccount";
 function App() {
   const Admin = localStorage.getItem("isAdmin") === "true";
   const userId = localStorage.getItem("userId");
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (Admin) {
+      navigate("/admin/true");
+    }
+  }, [navigate, Admin]);
+  useEffect(() => {
+    if (userId) {
+      navigate("/userDashboard");
+    }
+  }, [navigate, userId]);
   return (
     <div>
       {/* <NavBar /> */}
@@ -52,12 +67,13 @@ function App() {
         <Route path="/uerslinktree/:id" element={<UserDetails />} />
         <Route path="/createRole" element={<CreateUserRole />} />
         <Route path="/createChapter" element={<CreateChapters />} />
-        <Route path="/AdminProfile" element={<AdminProfile />} />
+        <Route path="/AdminProfilesettings" element={<AdminProfiler />} />
         <Route path="/userRole" element={<ViewUsersWithRoles />} />
         <Route
           path="/Admin/true"
           element={Admin ? <AdminProfile /> : <HomePage />}
         />
+        <Route path="/AdminDasboard" element={<AdminProfile />} />
         {Admin ? (
           <Route path="/createProject" element={<AdminCreateProject />} />
         ) : null}

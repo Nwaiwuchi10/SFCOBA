@@ -18,7 +18,7 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import "../AdminDashboard/AdminLayout.css";
 import { Card, CardActionArea, CardContent } from "@mui/material";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Image } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillHome, AiOutlineUserAdd } from "react-icons/ai";
 import {
@@ -70,24 +70,27 @@ function AdminLayout(props) {
     <div style={{ backgroundColor: "#0000CD", color: "white" }}>
       <div>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <img
-            src={sdr}
+          <Image
+            className="rounded"
+            src={localStorage.getItem("ProfilePic")}
             alt="hde"
             style={{
               width: "auto",
               height: "auto",
               color: "whitesmoke",
 
-              maxHeight: "72px",
-              maxWidth: "250px",
+              maxHeight: "50px",
+              maxWidth: "100px",
 
               display: "flex",
               justifyContent: "center",
               alignItem: "center",
               marginLeft: "auto",
               marginRight: "auto",
-              marginTop: "20px",
+              marginTop: "40px",
             }}
+            thumbnail
+            roundedCircle
           />
         </Link>
       </div>
@@ -128,7 +131,7 @@ function AdminLayout(props) {
                   <Dropdown.Menu className="drop-d">
                     <Dropdown.Item>
                       <Link
-                        to="/AdminProfile"
+                        to="/AdminProfilesettings"
                         style={{ textDecoration: "none" }}
                       >
                         Admin Profile
@@ -476,7 +479,9 @@ function AdminLayout(props) {
             color="#171744"
             style={{ marginLeft: "20px" }}
           >
-            Admin DashBoard
+            <Link to="/AdminDasboard" style={{ color: "#171744" }}>
+              Admin DashBoard
+            </Link>
           </Typography>
           {/* <div className="superadmin">SuperAdmin</div> */}
         </Toolbar>

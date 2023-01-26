@@ -22,62 +22,21 @@ import { FaUserTie } from "react-icons/fa";
 
 import AdminLayout from "../AdminDashboard/AdminLayout";
 import { Link } from "react-router-dom";
+import Blog from "../../pages/blog/Blog";
+import OnlineCourses from "../../pages/about/OnlineCourses";
+import Projects from "../../pages/Projects/Projects";
 const AdminProfile = () => {
   const drawerWidth = 240;
   return (
     <AdminLayout>
       <div>
         <Typography paragraph>{/* <AdminGetPost /> */}</Typography>
+
         <Typography paragraph>
-          <div className="dashboard-display">
-            <div>
-              <div className="class-border">
-                <Typography gutterBottom variant="h5" component="div">
-                  <ImProfile style={{ fontSize: "40px" }} />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  {/* <Link
-                    to="/getAdminProfile"
-                    style={{ color: "inherit", textDecoration: "none" }}
-                  > */}{" "}
-                  Admin Menu
-                  {/* </Link> */}
-                </Typography>
-              </div>
-            </div>
-            <div>
-              <div className="class-border">
-                <Typography gutterBottom variant="h5" component="div">
-                  <HiUserAdd style={{ fontSize: "40px" }} />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Profile Settings
-                </Typography>
-              </div>
-            </div>
-            <div>
-              <div className="class-border">
-                <Typography gutterBottom variant="h5" component="div">
-                  <FaUserTie style={{ fontSize: "40px" }} />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Users
-                </Typography>
-              </div>
-            </div>
-            <div>
-              <div className="class-border">
-                <Typography gutterBottom variant="h5" component="div">
-                  <ImEnvelop style={{ fontSize: "40px" }} />
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  SFCOBA Chapter
-                </Typography>
-              </div>
-            </div>
-          </div>
+          <Blog />
+          <OnlineCourses />
+          <Projects />
         </Typography>
-        <Typography paragraph>{/* <UserLIst2Screen /> */}</Typography>
         {/* </Box> */}
       </div>
     </AdminLayout>

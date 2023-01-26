@@ -72,7 +72,7 @@ function UserLayout(props) {
       <div>
         <Link to="/" style={{ textDecoration: "none" }}>
           <img
-            src={sdr}
+            src={localStorage.getItem("ProfilePic")}
             alt="hde"
             style={{
               width: "auto",
@@ -243,7 +243,9 @@ function UserLayout(props) {
             color="#171744"
             style={{ marginLeft: "20px" }}
           >
-            User DashBoard
+            <Link to="/userDashboard" style={{ color: "#171744" }}>
+              User DashBoard
+            </Link>
           </Typography>
           {/* <div className="superadmin">SuperAdmin</div> */}
         </Toolbar>
