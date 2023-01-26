@@ -169,6 +169,15 @@ function AdminLayout(props) {
                     </Dropdown.Item>
                     <Dropdown.Item>
                       {" "}
+                      <Link
+                        to="/createChapter"
+                        style={{ textDecoration: "none" }}
+                      >
+                        Create Chapter
+                      </Link>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      {" "}
                       <Link to="/userRole" style={{ textDecoration: "none" }}>
                         View Roles
                       </Link>
@@ -245,7 +254,7 @@ function AdminLayout(props) {
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
+                  <Link to="/ViewProjects" style={{ textDecoration: "none" }}>
                     View Project Bog
                   </Link>
                 </Dropdown.Item>
@@ -274,13 +283,16 @@ function AdminLayout(props) {
 
               <Dropdown.Menu className="drop-d">
                 <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
+                  <Link
+                    to="/createHallOfFame"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Create Hall of Fame
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link to="/ViewHallOfFame" style={{ textDecoration: "none" }}>
+                    View Hall Of Fames
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
@@ -308,13 +320,16 @@ function AdminLayout(props) {
 
               <Dropdown.Menu className="drop-d">
                 <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
+                  <Link
+                    to="/createBroadcast"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Create a BroadCast
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link to="/ViewBroadCast" style={{ textDecoration: "none" }}>
+                    View BroadCast
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>

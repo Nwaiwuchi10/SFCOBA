@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import "./About.css";
-import svc from "../../assets/images/svc.jpeg";
+import fn from "../../assets/images/fn.jpg";
 
 const About = () => {
   const [toggleTab, setToggleTab] = useState(1);
@@ -13,7 +13,7 @@ const About = () => {
         <div className="row">
           <div className="column">
             <div className="about-img">
-              <img src={svc} alt="jhfdfrf" className="about-img" />
+              <img src={fn} alt="jhfdfrf" className="about-img" />
             </div>
           </div>
 

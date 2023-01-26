@@ -1,28 +1,52 @@
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminLayout from "../AdminDashboard/AdminLayout";
 import "../AdminProject/AdminCreateProject.css";
-import Sfc from "../../assets/images/Sfc.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularIndeterminate from "../../components/Loading/Progress";
+import Sfc from "../../assets/images/Sfc.jpg";
 import axios from "axios";
-const AdminCreateBroadcast = () => {
+const UpdateHallOfFame = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
-  const [caption, setCaption] = useState("");
-  const [content, setContent] = useState("");
+  const [name, setName] = useState("");
+  const [significantContribution, setSignificantContribution] = useState("");
+  const [yearofGraduation, setYearofGraduation] = useState("");
+  const [imagePortrait, setImagePortrait] = useState("");
 
   const [loading, setLoading] = useState(false);
-
+  const uploadimage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convert2base64(file);
+    setImagePortrait(base64);
+    // setImage({ ...image, image: base64 });
+    console.log(base64);
+    // const reader = new FileReader();
+  };
+  const convert2base64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
   const submitHandler = (e) => {
     e.preventDefault();
     setLoading(true);
     const data = {
-      caption: caption,
-      content: content,
+      name: name,
+      imagePortrait: imagePortrait,
+      significantContribution: significantContribution,
+      yearofGraduation: yearofGraduation,
     };
 
     const headers = {
@@ -33,20 +57,25 @@ const AdminCreateBroadcast = () => {
     };
 
     axios
-      .post("https://sfcoba.herokuapp.com/api/announcement", data, headers)
+      .put(
+        `https://sfcoba.herokuapp.com/api/hallfame/update/${id}`,
+        data,
+        headers
+      )
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
-          setContent("");
-          setCaption("");
-
+          setName("");
+          setSignificantContribution("");
+          setYearofGraduation("");
+          setImagePortrait("");
           localStorage.setItem("token", data.token);
 
           console.log(res.data);
           toast.success("Post Sucessful");
-          navigate("/viewBroadcast");
+          navigate("/ViewHallOfFame");
         } else {
           toast.error(res.data.error);
         }
@@ -78,7 +107,7 @@ const AdminCreateBroadcast = () => {
                 />
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
-                    Create a Hall Of Fame Blog
+                    Update a Hall Of Fame Blog
                   </h3>
                   <p
                     class="d-flex justify-content-center"
@@ -91,25 +120,51 @@ const AdminCreateBroadcast = () => {
                     <div className="col-md-6 mb-4">
                       <TextField
                         className="input-label-input-divs"
-                        required
                         id="outlined-required"
-                        label="Caption"
+                        label="Project Title "
                         type="text"
-                        value={caption}
-                        onChange={(e) => setCaption(e.target.value)}
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
 
                         //   defaultValue="Match Day"
                       />
                     </div>
                     <div className="col-md-6 mb-4">
                       <TextField
-                        required
                         className="input-label-input-divs"
                         id="outlined-required"
-                        label="Content "
+                        label="Project by done by "
                         type="text"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
+                        value={yearofGraduation}
+                        onChange={(e) => setYearofGraduation(e.target.value)}
+
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        rows={8}
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        label="Significant Contribution "
+                        type="text"
+                        value={significantContribution}
+                        onChange={(e) =>
+                          setSignificantContribution(e.target.value)
+                        }
+
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        type="file"
+                        multiple
+                        accept=".jpeg, .png, .jpg, "
+                        onChange={(e) => uploadimage(e)}
 
                         //   defaultValue="Match Day"
                       />
@@ -122,7 +177,7 @@ const AdminCreateBroadcast = () => {
                         class="btn btn-success btn-block btn-lg "
                         style={{ background: "#0000CD" }}
                       >
-                        Create a BroadCast
+                        Update Hall Of Fame
                       </button>
                     </div>
                     <ToastContainer />
@@ -137,4 +192,4 @@ const AdminCreateBroadcast = () => {
   );
 };
 
-export default AdminCreateBroadcast;
+export default UpdateHallOfFame;

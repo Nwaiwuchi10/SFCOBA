@@ -23,6 +23,22 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import NavBar from "../../components/Header/NavBar";
 import Footer from "../../components/footer/Footer";
 const Register = () => {
+  const [news, setNews] = useState([]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      const { data } = await axios.get(
+        "http://sfcoba.herokuapp.com/api/users/chapter"
+      );
+      console.log(data);
+      setNews(data);
+      // setLoading(false);
+
+      //   localStorage.setItem("AdminUserDetails", JSON.stringify(data._id));
+      localStorage.setItem("AdimUserId", data.user?._id);
+    };
+
+    fetchPosts();
+  }, []);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -180,37 +196,26 @@ const Register = () => {
                     *pls all the blanck inputs are been required*
                   </p>
                   <form class="px-md-2" onSubmit={submitHandler}>
-                    <div className="row">
+                    <div>
                       <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Email "
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
+                        <TextField
+                          required
+                          id="outlined-required"
+                          label="Email "
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="input-label-input-div"
+                          //   defaultValue="Match Day"
+                        />
                       </div>
                       <div className="col-md-6 mb-4">
-                        <FormControl
-                          sx={{ m: 1, width: "30ch" }}
-                          variant="outlined"
-                        >
+                        <FormControl>
                           <InputLabel htmlFor="outlined-adornment-password">
                             Password
                           </InputLabel>
                           <OutlinedInput
+                            className="input-label-input-div"
                             id="outlined-adornment-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -236,234 +241,164 @@ const Register = () => {
                         </FormControl>
                       </div>
                     </div>
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <FormControl
-                          sx={{ m: 1, width: "30ch" }}
-                          variant="outlined"
-                        >
-                          <InputLabel htmlFor="outlined-adornment-password">
-                            Confirm Password
-                          </InputLabel>
-                          <OutlinedInput
-                            id="outlined-adornment-password"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            type={showPassword ? "text" : "password"}
-                            endAdornment={
-                              <InputAdornment position="end">
-                                <IconButton
-                                  aria-label="toggle password visibility"
-                                  onClick={handleClickShowPassword}
-                                  onMouseDown={handleMouseDownPassword}
-                                  edge="end"
-                                >
-                                  {showPassword ? (
-                                    <VisibilityOff />
-                                  ) : (
-                                    <Visibility />
-                                  )}
-                                </IconButton>
-                              </InputAdornment>
-                            }
-                            label="Password"
-                          />
-                        </FormControl>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Surname"
-                            type="text"
-                            value={firstName}
-                            onChange={(e) => setFirstName(e.target.value)}
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
+
+                    <div className="col-md-6 mb-4">
+                      <FormControl>
+                        <InputLabel htmlFor="outlined-adornment-password">
+                          Confirm Password
+                        </InputLabel>
+                        <OutlinedInput
+                          className="input-label-input-div"
+                          id="outlined-adornment-password"
+                          value={confirmPassword}
+                          onChange={(e) => setConfirmPassword(e.target.value)}
+                          type={showPassword ? "text" : "password"}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                              >
+                                {showPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                          label="Password"
+                        />
+                      </FormControl>
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Surname"
+                        type="text"
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
                     </div>
 
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Second Name"
-                            type="text"
-                            value={secondName}
-                            onChange={(e) => setSecondName(e.target.value)}
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Other Names"
-                            type="text"
-                            value={otherName}
-                            onChange={(e) => setOtherName(e.target.value)}
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Second Name"
+                        type="text"
+                        value={secondName}
+                        onChange={(e) => setSecondName(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Other Names"
+                        type="text"
+                        value={otherName}
+                        onChange={(e) => setOtherName(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
                     </div>
 
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Year of graduation"
-                            type="text"
-                            value={yearOfGraduation}
-                            onChange={(e) =>
-                              setYearOfGraduation(e.target.value)
-                            }
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Occupation"
-                            type="text"
-                            value={occupation}
-                            onChange={(e) => setOccupation(e.target.value)}
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Year of graduation"
+                        type="text"
+                        value={yearOfGraduation}
+                        onChange={(e) => setYearOfGraduation(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Occupation"
+                        type="text"
+                        value={occupation}
+                        onChange={(e) => setOccupation(e.target.value)}
 
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
+                        //   defaultValue="Match Day"
+                      />
                     </div>
 
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Phone Number"
-                            type="text"
-                            value={phoneNumber}
-                            onChange={(e) => setPhoneNumber(e.target.value)}
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Contact Adress"
-                            type="text"
-                            value={contactAdress}
-                            onChange={(e) => setContactAdress(e.target.value)}
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        label="Phone Number"
+                        type="text"
+                        value={phoneNumber}
+                        onChange={(e) => setPhoneNumber(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
                     </div>
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="SFCOBA Chapter "
-                            type="text"
-                            value={chapter}
-                            onChange={(e) => setChapter(e.target.value)}
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        className="input-label-input-div"
+                        id="outlined-required"
+                        label="Contact Adress"
+                        type="text"
+                        value={contactAdress}
+                        onChange={(e) => setContactAdress(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
 
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "30ch" },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            type="file"
-                            multiple
-                            accept=".jpeg, .png, .jpg, "
-                            onChange={(e) => uploadimage(e)}
-                          />
-                        </Box>
-                      </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-select-currency-native"
+                        select
+                        SelectProps={{
+                          native: true,
+                        }}
+                        label="SFCOBA Chapter "
+                        type="text"
+                        value={chapter}
+                        onChange={(e) => setChapter(e.target.value)}
+
+                        //   defaultValue="Match Day"
+                      >
+                        {" "}
+                        {news?.chapter?.map((usery) => (
+                          <>
+                            <option></option>
+                            <option>{usery.chapter} </option>
+                          </>
+                        ))}
+                      </TextField>
                     </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-div"
+                        required
+                        id="outlined-required"
+                        type="file"
+                        multiple
+                        accept=".jpeg, .png, .jpg, "
+                        onChange={(e) => uploadimage(e)}
+                      />
+                    </div>
+
                     {loading && <CircularIndeterminate />}
                     <button
                       type="submit"

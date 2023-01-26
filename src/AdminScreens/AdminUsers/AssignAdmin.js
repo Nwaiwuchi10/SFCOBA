@@ -1,29 +1,36 @@
-import { TextField } from "@mui/material";
-import { Box } from "@mui/system";
+import { Checkbox } from "@mui/material";
+import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import AdminLayout from "../AdminDashboard/AdminLayout";
-import "../AdminProject/AdminCreateProject.css";
+import { useNavigate, useParams } from "react-router-dom";
 import Sfc from "../../assets/images/Sfc.jpg";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularIndeterminate from "../../components/Loading/Progress";
-import axios from "axios";
-const AdminCreateBroadcast = () => {
+import AdminLayout from "../AdminDashboard/AdminLayout";
+
+import "react-toastify/dist/ReactToastify.css";
+
+const AssignAdmin = () => {
   const navigate = useNavigate();
-  const userId = localStorage.getItem("userId");
-  const [caption, setCaption] = useState("");
-  const [content, setContent] = useState("");
+  const { id } = useParams();
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  //   localStorage.getItem("userId");
+  const [user, setUser] = useState({ id });
+  const [isAdmin, setIsAdmin] = useState("");
 
   const [loading, setLoading] = useState(false);
 
+  //   const userId = localStorage.getItem("userId");
+
   const submitHandler = (e) => {
     e.preventDefault();
-    setLoading(true);
     const data = {
-      caption: caption,
-      content: content,
+      isAdmin: isAdmin,
+      user: user,
     };
+
+    setLoading(true);
 
     const headers = {
       "Custom-Header": "xxxx-xxxx-xxxx-xxxx",
@@ -33,29 +40,34 @@ const AdminCreateBroadcast = () => {
     };
 
     axios
-      .post("https://sfcoba.herokuapp.com/api/announcement", data, headers)
+      .put(
+        `http://sfcoba.herokuapp.com/api/users/adminUpdate/${id}`,
+        data,
+        headers
+      )
 
       .then((res) => {
         console.log(res.data);
         setLoading(false);
         if (res.data) {
-          setContent("");
-          setCaption("");
+          setIsAdmin("");
+          setUser("");
 
-          localStorage.setItem("token", data.token);
+          //   const items = data;
+          //   localStorage.setItem("User-Info", JSON.stringify(items));
+
+          localStorage.setItem("NewUserRole", res.data.roles);
 
           console.log(res.data);
-          toast.success("Post Sucessful");
-          navigate("/viewBroadcast");
+          toast.success("Roles Category created sucessfully");
+          navigate("/getUsers");
         } else {
           toast.error(res.data.error);
         }
       })
       .catch((err) => {
         setLoading(false);
-        toast.error(
-          "Failed to create a post, check your network connection or input the correct textfields"
-        );
+        toast.error("Failed to create roles");
       });
   };
   return (
@@ -78,41 +90,27 @@ const AdminCreateBroadcast = () => {
                 />
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
-                    Create a Hall Of Fame Blog
+                    User Assign to an Admin
                   </h3>
                   <p
                     class="d-flex justify-content-center"
                     style={{ marginLeft: "15px" }}
                   >
-                    *pls all the blanck inputs are been required*
+                    * Admin User*
                   </p>
 
                   <form onSubmit={submitHandler}>
-                    <div className="col-md-6 mb-4">
-                      <TextField
-                        className="input-label-input-divs"
-                        required
-                        id="outlined-required"
-                        label="Caption"
-                        type="text"
-                        value={caption}
-                        onChange={(e) => setCaption(e.target.value)}
-
-                        //   defaultValue="Match Day"
-                      />
-                    </div>
-                    <div className="col-md-6 mb-4">
-                      <TextField
-                        required
-                        className="input-label-input-divs"
-                        id="outlined-required"
-                        label="Content "
-                        type="text"
-                        value={content}
-                        onChange={(e) => setContent(e.target.value)}
-
-                        //   defaultValue="Match Day"
-                      />
+                    <div
+                      className="form-outline mb-4 "
+                      style={{ display: "flex", justifyContent: "center" }}
+                    >
+                      <Checkbox
+                        sx={{ "& .MuiSvgIcon-root": { fontSize: 48 } }}
+                        type="checkbox"
+                        label="Is Admin"
+                        checked={isAdmin}
+                        onChange={(e) => setIsAdmin(e.target.checked)}
+                      ></Checkbox>
                     </div>
 
                     {loading && <CircularIndeterminate />}
@@ -122,7 +120,7 @@ const AdminCreateBroadcast = () => {
                         class="btn btn-success btn-block btn-lg "
                         style={{ background: "#0000CD" }}
                       >
-                        Create a BroadCast
+                        Assign user to an Admin
                       </button>
                     </div>
                     <ToastContainer />
@@ -137,4 +135,4 @@ const AdminCreateBroadcast = () => {
   );
 };
 
-export default AdminCreateBroadcast;
+export default AssignAdmin;

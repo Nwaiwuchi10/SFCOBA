@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularIndeterminate from "../../components/Loading/Progress";
-
+import "./Login.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -127,61 +127,48 @@ const UserLogin = () => {
                     *pls all the blanck inputs are been required*
                   </p>
                   <form class="px-md-2" onSubmit={submitHandler}>
-                    <div className="row">
-                      <div className="col-md-6 mb-4">
-                        <Box
-                          // component="form"
-                          sx={{
-                            "& .MuiTextField-root": { m: 1, width: "26ch " },
-                          }}
-                          noValidate
-                          autoComplete="off"
-                        >
-                          <TextField
-                            required
-                            id="outlined-required"
-                            label="Email "
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-
-                            //   defaultValue="Match Day"
-                          />
-                        </Box>
-                      </div>
-                      <div className="col-md-6 mb-4">
-                        <FormControl
-                          sx={{ m: 1, width: "26ch" }}
-                          variant="outlined"
-                        >
-                          <InputLabel htmlFor="outlined-adornment-password">
-                            Password
-                          </InputLabel>
-                          <OutlinedInput
-                            id="outlined-adornment-password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            type={showPassword ? "text" : "password"}
-                            endAdornment={
-                              <InputAdornment position="end">
-                                <IconButton
-                                  aria-label="toggle password visibility"
-                                  onClick={handleClickShowPassword}
-                                  onMouseDown={handleMouseDownPassword}
-                                  edge="end"
-                                >
-                                  {showPassword ? (
-                                    <VisibilityOff />
-                                  ) : (
-                                    <Visibility />
-                                  )}
-                                </IconButton>
-                              </InputAdornment>
-                            }
-                            label="Password"
-                          />
-                        </FormControl>
-                      </div>
+                    <div class="form-outline mb-4">
+                      <TextField
+                        required
+                        id="outlined-required"
+                        label="Email "
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="input-label-input-div"
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div class="form-outline mb-4">
+                      <FormControl>
+                        <InputLabel htmlFor="outlined-adornment-password">
+                          Password
+                        </InputLabel>
+                        <OutlinedInput
+                          className="input-label-input-div"
+                          id="outlined-adornment-password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          type={showPassword ? "text" : "password"}
+                          endAdornment={
+                            <InputAdornment position="end">
+                              <IconButton
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                              >
+                                {showPassword ? (
+                                  <VisibilityOff />
+                                ) : (
+                                  <Visibility />
+                                )}
+                              </IconButton>
+                            </InputAdornment>
+                          }
+                          label="Password"
+                        />
+                      </FormControl>
                     </div>
 
                     {loading && <CircularIndeterminate />}

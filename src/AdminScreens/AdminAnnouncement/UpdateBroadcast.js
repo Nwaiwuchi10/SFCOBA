@@ -1,7 +1,7 @@
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AdminLayout from "../AdminDashboard/AdminLayout";
 import "../AdminProject/AdminCreateProject.css";
 import Sfc from "../../assets/images/Sfc.jpg";
@@ -9,7 +9,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CircularIndeterminate from "../../components/Loading/Progress";
 import axios from "axios";
-const AdminCreateBroadcast = () => {
+const UpdateBroadcast = () => {
+  const { id } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
   const [caption, setCaption] = useState("");
@@ -33,7 +34,11 @@ const AdminCreateBroadcast = () => {
     };
 
     axios
-      .post("https://sfcoba.herokuapp.com/api/announcement", data, headers)
+      .put(
+        `https://sfcoba.herokuapp.com/api/announcement/update/${id}`,
+        data,
+        headers
+      )
 
       .then((res) => {
         console.log(res.data);
@@ -78,7 +83,7 @@ const AdminCreateBroadcast = () => {
                 />
                 <div class="card-body p-4 p-md-5">
                   <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
-                    Create a Hall Of Fame Blog
+                    Update a Hall Of Fame Blog
                   </h3>
                   <p
                     class="d-flex justify-content-center"
@@ -91,7 +96,6 @@ const AdminCreateBroadcast = () => {
                     <div className="col-md-6 mb-4">
                       <TextField
                         className="input-label-input-divs"
-                        required
                         id="outlined-required"
                         label="Caption"
                         type="text"
@@ -103,7 +107,6 @@ const AdminCreateBroadcast = () => {
                     </div>
                     <div className="col-md-6 mb-4">
                       <TextField
-                        required
                         className="input-label-input-divs"
                         id="outlined-required"
                         label="Content "
@@ -122,7 +125,7 @@ const AdminCreateBroadcast = () => {
                         class="btn btn-success btn-block btn-lg "
                         style={{ background: "#0000CD" }}
                       >
-                        Create a BroadCast
+                        Update a BroadCast
                       </button>
                     </div>
                     <ToastContainer />
@@ -137,4 +140,4 @@ const AdminCreateBroadcast = () => {
   );
 };
 
-export default AdminCreateBroadcast;
+export default UpdateBroadcast;

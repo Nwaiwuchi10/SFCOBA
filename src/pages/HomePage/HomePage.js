@@ -8,11 +8,13 @@ import Price from "../price/Price";
 import Testimony from "../testimony/Testimony";
 import Projects from "../Projects/Projects";
 import NavBar from "../../components/Header/NavBar";
+import Announcement from "../Announcement/Announcement";
 
 const HomePage = () => {
   return (
     <div>
       <NavBar />
+      <Announcement />
       <Hero />
       <About />
 

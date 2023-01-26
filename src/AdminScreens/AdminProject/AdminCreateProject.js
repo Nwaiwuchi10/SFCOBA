@@ -1,5 +1,6 @@
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
+import Sfc from "../../assets/images/Sfc.jpg";
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -86,134 +87,98 @@ const AdminCreateProject = () => {
   };
   return (
     <AdminLayout>
-      <section>
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-          <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card jbd" style={{ borderRadius: "15px" }}>
-                  <div class="card-body p-5">
-                    <h3 class="text-uppercase text-center mb-5">
-                      Create a Project Blog
-                    </h3>
+      <section class="h-100 h-custom" style={{ backgroundColor: "white" }}>
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                <img
+                  src={Sfc}
+                  class="w-100"
+                  style={{
+                    borderTopLeftRadius: ".3rem",
+                    borderTopRightRadius: ".3rem",
+                    height: "20vh",
+                    objectFit: "contain",
+                  }}
+                  alt="Sample photo"
+                />
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
+                    Create a Project Blog
+                  </h3>
+                  <p
+                    class="d-flex justify-content-center"
+                    style={{ marginLeft: "15px" }}
+                  >
+                    *pls all the blanck inputs are been required*
+                  </p>
 
-                    <form onSubmit={submitHandler}>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": {
-                                m: 1,
-                                // width: "24ch ",
-                              },
-                            }}
-                            className="gf-width"
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Project Title "
-                              type="text"
-                              value={projectTitle}
-                              onChange={(e) => setProjectTitle(e.target.value)}
+                  <form onSubmit={submitHandler}>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-divs"
+                        required
+                        id="outlined-required"
+                        label="Project Title "
+                        type="text"
+                        value={projectTitle}
+                        onChange={(e) => setProjectTitle(e.target.value)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": {
-                                m: 1,
-                                // width: "24ch ",
-                              },
-                            }}
-                            className="gf-width"
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="SFCOBA Set "
-                              type="text"
-                              value={classOf}
-                              onChange={(e) => setClassOf(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-divs"
+                        required
+                        id="outlined-required"
+                        label="SFCOBA Set "
+                        type="text"
+                        value={classOf}
+                        onChange={(e) => setClassOf(e.target.value)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                      </div>
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
 
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": {
-                                m: 1,
-                                // width: "24ch ",
-                              },
-                            }}
-                            className="gf-width"
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Blog Content"
-                              type="text"
-                              value={content}
-                              onChange={(e) => setContent(e.target.value)}
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        label="Blog Content"
+                        type="text"
+                        value={content}
+                        onChange={(e) => setContent(e.target.value)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": {
-                                m: 1,
-                                // width: "26ch ",
-                              },
-                            }}
-                            className="gf-width"
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              type="file"
-                              multiple
-                              accept=".jpeg, .png, .jpg, "
-                              onChange={(e) => uploadimage(e)}
-                            />
-                          </Box>
-                        </div>
-                      </div>
-                      {loading && <CircularIndeterminate />}
-                      <div class="d-flex justify-content-center">
-                        <button
-                          type="submit"
-                          class="btn btn-success btn-block btn-lg "
-                          style={{ background: "#0000CD" }}
-                        >
-                          Post
-                        </button>
-                        <ToastContainer />
-                      </div>
-                    </form>
-                  </div>
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        type="file"
+                        multiple
+                        accept=".jpeg, .png, .jpg, "
+                        onChange={(e) => uploadimage(e)}
+                      />
+                    </div>
+
+                    {loading && <CircularIndeterminate />}
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="submit"
+                        class="btn btn-success btn-block btn-lg "
+                        style={{ background: "#0000CD" }}
+                      >
+                        Post
+                      </button>
+                      <ToastContainer />
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>

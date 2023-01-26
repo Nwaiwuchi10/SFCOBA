@@ -1,124 +1,186 @@
 import { TextField } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import AdminLayout from "../AdminDashboard/AdminLayout";
-import "./AdminCreateProject.css";
+import "../AdminProject/AdminCreateProject.css";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import CircularIndeterminate from "../../components/Loading/Progress";
+import Sfc from "../../assets/images/Sfc.jpg";
+import axios from "axios";
 const AdminCreateHallOfFame = () => {
+  const navigate = useNavigate();
+  const userId = localStorage.getItem("userId");
+  const [name, setName] = useState("");
+  const [significantContribution, setSignificantContribution] = useState("");
+  const [yearofGraduation, setYearofGraduation] = useState("");
+  const [imagePortrait, setImagePortrait] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const uploadimage = async (e) => {
+    const file = e.target.files[0];
+    const base64 = await convert2base64(file);
+    setImagePortrait(base64);
+    // setImage({ ...image, image: base64 });
+    console.log(base64);
+    // const reader = new FileReader();
+  };
+  const convert2base64 = (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        resolve(fileReader.result);
+      };
+      fileReader.onerror = (error) => {
+        reject(error);
+      };
+    });
+  };
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const data = {
+      name: name,
+      imagePortrait: imagePortrait,
+      significantContribution: significantContribution,
+      yearofGraduation: yearofGraduation,
+    };
+
+    const headers = {
+      "Custom-Header": "xxxx-xxxx-xxxx-xxxx",
+      "Content-Type": "application/json",
+      // Accept: "application/json",
+      // body: JSON.stringify(data),
+    };
+
+    axios
+      .post("https://sfcoba.herokuapp.com/api/hallfame", data, headers)
+
+      .then((res) => {
+        console.log(res.data);
+        setLoading(false);
+        if (res.data) {
+          setName("");
+          setSignificantContribution("");
+          setYearofGraduation("");
+          setImagePortrait("");
+          localStorage.setItem("token", data.token);
+
+          console.log(res.data);
+          toast.success("Post Sucessful");
+          navigate("/ViewHallOfFame");
+        } else {
+          toast.error(res.data.error);
+        }
+      })
+      .catch((err) => {
+        setLoading(false);
+        toast.error(
+          "Failed to create a post, check your network connection or input the correct textfields"
+        );
+      });
+  };
   return (
     <AdminLayout>
-      <section>
-        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
-          <div class="container h-100">
-            <div class="row d-flex justify-content-center align-items-center h-100">
-              <div class="col-12 col-md-9 col-lg-7 col-xl-6">
-                <div class="card" style={{ borderRadius: "15px" }}>
-                  <div class="card-body p-5">
-                    <h2 class="text-uppercase text-center mb-5">
-                      Create a Project Blog
-                    </h2>
+      <section class="h-100 h-custom" style={{ backgroundColor: "white" }}>
+        <div class="container py-5 h-100">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+              <div class="card rounded-3">
+                <img
+                  src={Sfc}
+                  class="w-100"
+                  style={{
+                    borderTopLeftRadius: ".3rem",
+                    borderTopRightRadius: ".3rem",
+                    height: "20vh",
+                    objectFit: "contain",
+                  }}
+                  alt="Sample photo"
+                />
+                <div class="card-body p-4 p-md-5">
+                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 d-flex justify-content-center">
+                    Create a Hall Of Fame Blog
+                  </h3>
+                  <p
+                    class="d-flex justify-content-center"
+                    style={{ marginLeft: "15px" }}
+                  >
+                    *pls all the blanck inputs are been required*
+                  </p>
 
-                    <form>
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": { m: 1, width: "26ch " },
-                            }}
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Email "
-                              type="email"
-                              // value={email}
-                              // onChange={(e) => setEmail(e.target.value)}
+                  <form onSubmit={submitHandler}>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        label="Project Title "
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": { m: 1, width: "26ch " },
-                            }}
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Email "
-                              type="email"
-                              // value={email}
-                              // onChange={(e) => setEmail(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        className="input-label-input-divs"
+                        required
+                        id="outlined-required"
+                        label="Project by done by "
+                        type="text"
+                        value={yearofGraduation}
+                        onChange={(e) => setYearofGraduation(e.target.value)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                      </div>
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
 
-                      <div className="row">
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": { m: 1, width: "26ch " },
-                            }}
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Email "
-                              type="email"
-                              // value={email}
-                              // onChange={(e) => setEmail(e.target.value)}
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        rows={8}
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        label="Significant Contribution "
+                        type="text"
+                        value={significantContribution}
+                        onChange={(e) =>
+                          setSignificantContribution(e.target.value)
+                        }
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                        <div className="col-md-6 mb-4">
-                          <Box
-                            // component="form"
-                            sx={{
-                              "& .MuiTextField-root": { m: 1, width: "26ch " },
-                            }}
-                            noValidate
-                            autoComplete="off"
-                          >
-                            <TextField
-                              required
-                              id="outlined-required"
-                              label="Email "
-                              type="email"
-                              // value={email}
-                              // onChange={(e) => setEmail(e.target.value)}
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
+                    <div className="col-md-6 mb-4">
+                      <TextField
+                        required
+                        className="input-label-input-divs"
+                        id="outlined-required"
+                        type="file"
+                        multiple
+                        accept=".jpeg, .png, .jpg, "
+                        onChange={(e) => uploadimage(e)}
 
-                              //   defaultValue="Match Day"
-                            />
-                          </Box>
-                        </div>
-                      </div>
+                        //   defaultValue="Match Day"
+                      />
+                    </div>
 
-                      <div class="d-flex justify-content-center">
-                        <button
-                          type="button"
-                          class="btn btn-success btn-block btn-lg "
-                          style={{ background: "#0000CD" }}
-                        >
-                          Register
-                        </button>
-                      </div>
-                    </form>
-                  </div>
+                    {loading && <CircularIndeterminate />}
+                    <div class="d-flex justify-content-center">
+                      <button
+                        type="submit"
+                        class="btn btn-success btn-block btn-lg "
+                        style={{ background: "#0000CD" }}
+                      >
+                        Hall Of Fame
+                      </button>
+                    </div>
+                    <ToastContainer />
+                  </form>
                 </div>
               </div>
             </div>

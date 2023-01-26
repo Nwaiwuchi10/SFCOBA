@@ -29,9 +29,9 @@
 .about-img {
   /* position: absolute; */
   /* background-image: url("../Images/pexels-djordje-petrovic-2102415.jpg"); */
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat;
   background-size: cover;
-  background-position: center center;
+  background-position: center center; */
   height: 750px;
   width: 100%;
   object-fit: cover;

@@ -1,5 +1,5 @@
 import React from "react";
-
+import AdminDashboard from "../AdminScreens/AdminDashboard";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,14 +19,27 @@ import Typography from "@mui/material/Typography";
 import { ImEnvelop, ImProfile } from "react-icons/im";
 import { HiUserAdd } from "react-icons/hi";
 import { FaUserTie } from "react-icons/fa";
-
-import AdminLayout from "../AdminDashboard/AdminLayout";
+import UserLIst2Screen from "./AdminRoles/UserList2Screen";
+import AdminLayout from "./AdminLayout";
 import { Link } from "react-router-dom";
 const AdminProfile = () => {
   const drawerWidth = 240;
   return (
     <AdminLayout>
+      {/* <AdminDashboard /> */}
       <div>
+        {/* <Box
+          component="main"
+          sx={{
+            flexGrow: 1,
+            p: 3,
+            marginLeft: "auto",
+            marginRight: "auto",
+            width: { sm: `calc(100% - ${drawerWidth}px)` },
+          }}
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+        > */}
+        {/* <Toolbar /> */}
         <Typography paragraph>{/* <AdminGetPost /> */}</Typography>
         <Typography paragraph>
           <div className="dashboard-display">
@@ -36,12 +49,13 @@ const AdminProfile = () => {
                   <ImProfile style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {/* <Link
+                  <Link
                     to="/getAdminProfile"
                     style={{ color: "inherit", textDecoration: "none" }}
-                  > */}{" "}
-                  Admin Menu
-                  {/* </Link> */}
+                  >
+                    {" "}
+                    Profile Menu
+                  </Link>
                 </Typography>
               </div>
             </div>
@@ -51,7 +65,7 @@ const AdminProfile = () => {
                   <HiUserAdd style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Profile Settings
+                  Admin Profile
                 </Typography>
               </div>
             </div>
@@ -61,7 +75,7 @@ const AdminProfile = () => {
                   <FaUserTie style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Users
+                  Administrator
                 </Typography>
               </div>
             </div>
@@ -71,13 +85,13 @@ const AdminProfile = () => {
                   <ImEnvelop style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  SFCOBA Chapter
+                  Messages
                 </Typography>
               </div>
             </div>
           </div>
         </Typography>
-        <Typography paragraph>{/* <UserLIst2Screen /> */}</Typography>
+        <Typography paragraph></Typography>
         {/* </Box> */}
       </div>
     </AdminLayout>

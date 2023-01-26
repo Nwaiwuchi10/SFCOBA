@@ -45,11 +45,11 @@ const ViewMembers = () => {
                   <div class="bg-white p-3 text-center rounded box">
                     {use.profilePic ? (
                       <img
-                        class="img-responsive rounded-circle"
+                        class="img-responsive "
                         src={use.profilePic}
                         alt="ddjjds"
                         style={{
-                          width: "90%",
+                          width: "100%",
                           height: "20vh",
                           objectFit: "contain",
                         }}

@@ -12,6 +12,8 @@
 .flexSB {
   display: flex;
   justify-content: space-between;
+
+  /* text-align: center; */
 }
 p {
   line-height: 30px;

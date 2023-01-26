@@ -1,0 +1,8 @@
+.ance-div {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  left: auto;
+  right: auto;
+  align-items: center;
+}

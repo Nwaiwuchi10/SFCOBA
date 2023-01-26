@@ -3,6 +3,7 @@
   width: 100%;
   overflow: 0.5;
   display: block;
+  height: 10vh;
   margin-left: auto;
   margin-right: auto;
   background: linear-gradient(to right, #0505ac, blue, #0505ac);
@@ -44,7 +45,16 @@ header ul li a {
 header ul li a:hover {
   color: red;
 }
+.v-ted {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
   background-color: #0000cd;
   /* background-color: #1eb2a6; */
   padding: 30px 70px;
@@ -99,11 +109,31 @@ header ul li a:hover {
   .start {
     clip-path: none;
   }
+  .v-ted {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .flexSB ul {
     text-align: center;
     align-items: center;
     line-height: 50px;
     font-size: larger;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .flexSB ul li {
+    text-align: center;
+  }
+  .start-img-div {
+    display: block;
+    background: none;
+    color: #fff;
+    font-size: 30px;
+    position: relative;
+    right: 55px;
+    top: 0px;
+    bottom: 0px;
   }
   .flexSB ul li:hover {
     color: red;
@@ -121,19 +151,25 @@ header ul li a:hover {
     margin-bottom: 20px;
   }
   .toggle {
-    display: block;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     background: none;
+    padding-bottom: 20px;
     color: #fff;
-    font-size: 30px;
-    position: absolute;
+    font-size: 25px;
+    /* position: absolute;
     right: 0;
-    top: -20px;
+    top: -20px; */
   }
   .mobile-nav {
     position: absolute;
+    z-index: 1;
     top: 7vh;
     left: 0;
     width: 100%;
+    height: 100vh;
     background-color: #0000cd;
 
     /* background-color: #1eb2a6; */
