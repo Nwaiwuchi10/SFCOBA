@@ -24,7 +24,7 @@ const Hero = () => {
               {/* <i className="fa fa-long-arrow-alt-right"></i> */}
             </button>
             <button className="but">
-              <Link to="/members" style={{ color: "inherit" }}>
+              <Link to="/login" style={{ color: "inherit" }}>
                 VIEW MEMBERS
               </Link>{" "}
             </button>

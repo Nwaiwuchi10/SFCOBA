@@ -1,0 +1,10 @@
+.bnm {
+  margin-bottom: 40px;
+}
+
+@media (max-width: 480px) {
+  .bnm {
+    margin-top: -120px;
+    margin-bottom: 40px;
+  }
+}

@@ -38,7 +38,7 @@ const NavBar = () => {
 
             <li>
               <Link
-                to="/allBroadcast"
+                to="/login"
                 style={{
                   alignItems: "center",
                   textAlign: "center",
@@ -60,7 +60,7 @@ const NavBar = () => {
             </li>
 
             <li>
-              <Link to="/" style={{ textAlign: "center" }}>
+              <Link to="/login" style={{ textAlign: "center" }}>
                 Calender
               </Link>
             </li>

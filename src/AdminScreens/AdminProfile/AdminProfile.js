@@ -25,6 +25,7 @@ import { Link } from "react-router-dom";
 import Blog from "../../pages/blog/Blog";
 import OnlineCourses from "../../pages/about/OnlineCourses";
 import Projects from "../../pages/Projects/Projects";
+import Announcement from "../../pages/Announcement/Announcement";
 const AdminProfile = () => {
   const drawerWidth = 240;
   return (
@@ -33,6 +34,7 @@ const AdminProfile = () => {
         <Typography paragraph>{/* <AdminGetPost /> */}</Typography>
 
         <Typography paragraph>
+          <Announcement />
           <Blog />
           <OnlineCourses />
           <Projects />

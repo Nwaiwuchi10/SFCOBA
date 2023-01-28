@@ -22,6 +22,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import NavBar from "../../components/Header/NavBar";
 import Footer from "../../components/footer/Footer";
+// import toast, { Toaster } from "react-hot-toast";
 const UserLogin = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem("userId");
@@ -81,13 +82,12 @@ const UserLogin = () => {
           localStorage.setItem("membershipId", res.data.membershipId);
 
           console.log(res.data);
-          toast.success("Login Sucessful", {
-            position: toast.POSITION.TOP_LEFT,
-          });
+
+          toast.success("Login Sucessful");
           {
             localStorage.getItem("isAdmin") === "true"
-              ? navigate("/Admin/true")
-              : navigate("/");
+              ? navigate("/admin/true")
+              : navigate("/userDashboard");
           }
         } else {
           toast.error(res.data.error);
@@ -184,6 +184,7 @@ const UserLogin = () => {
                         Login
                       </button>
                     </div>
+                    {/* <Toaster position="top-right" reverseOrder={true} /> */}
                     <ToastContainer />
                   </form>
                 </div>

@@ -6,6 +6,7 @@ import Loader from "../../components/Loading/Loader";
 import Message from "../../components/Message/Message";
 import NavBar from "../../components/Header/NavBar";
 import Footer from "../../components/footer/Footer";
+import { Link } from "react-router-dom";
 const ViewMembers = () => {
   const [poster, setPoster] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -27,7 +28,7 @@ const ViewMembers = () => {
   }, []);
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <div class="container text-center  mb-2 mt-5">
         <h3 class="mb-0 ">SFCOBA MEMEBRS</h3>
         <span></span>
@@ -51,6 +52,7 @@ const ViewMembers = () => {
                         style={{
                           width: "100%",
                           height: "20vh",
+
                           objectFit: "contain",
                         }}
                       />
@@ -85,7 +87,14 @@ const ViewMembers = () => {
                       <span>{use.occupation}</span>
                     </div>
                     <div class="mt-4">
-                      <h6 class="v-profile">View Profile</h6>
+                      <h6 class="v-profile">
+                        <Link
+                          to={`/member/profile/${use._id}`}
+                          style={{ color: "inherit" }}
+                        >
+                          View Profile
+                        </Link>
+                      </h6>
                     </div>
                   </div>
                 </div>
@@ -94,7 +103,7 @@ const ViewMembers = () => {
           </div>
         </div>
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };

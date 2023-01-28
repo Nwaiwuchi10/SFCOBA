@@ -63,9 +63,10 @@ const Footer = () => {
                     }}
                   />
                   <div className="jbi-foot">
-                    Here you can use rows and col umns to organize your footer
-                    content. Lorem ipsum dolor sit amet, consectetur adipisicing
-                    elit.
+                    Saint Finbarr’s College, Akoka, Yaba, Lagos, Nigeria has a
+                    rich history and illustrious record of producing leaders in
+                    various professional segments both domestically and
+                    internationally.
                   </div>
                 </div>
                 {/* <!-- Grid column --> */}
@@ -84,22 +85,22 @@ const Footer = () => {
                   />
                   <p>
                     <a href="#!" class="text-dark">
-                      MDBootstrap
+                      Home
                     </a>
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      MDWordPress
+                      News
                     </a>
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      BrandFlow
+                      About Us
                     </a>
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      Bootstrap Angular
+                      Chapters
                     </a>
                   </p>
                 </div>
@@ -124,17 +125,17 @@ const Footer = () => {
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      Become an Affiliate
+                      Promote Your Business
                     </a>
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      Shipping Rates
+                      BroadCast
                     </a>
                   </p>
                   <p>
                     <a href="#!" class="text-dark">
-                      Help
+                      Members
                     </a>
                   </p>
                 </div>
@@ -143,7 +144,7 @@ const Footer = () => {
                 {/* <!-- Grid column --> */}
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                   {/* <!-- Links --> */}
-                  <h6 class="text-uppercase fw-bold">Contact</h6>
+                  <h6 class="text-uppercase fw-bold">Contact Us</h6>
                   <hr
                     class="mb-4 mt-0 d-inline-block mx-auto"
                     style={{
@@ -153,16 +154,18 @@ const Footer = () => {
                     }}
                   />
                   <p>
-                    <i class="fas fa-home mr-3"></i> New York, NY 10012, US
+                    <i class="fas fa-home mr-3"></i> SFCOBA Secretariate: Saint
+                    Finbarr's College, Akoka, Yaba, Lagos, P.O.Box 7306, Somolu,
+                    Lagos
                   </p>
                   <p>
-                    <i class="fas fa-envelope mr-3"></i> info@example.com
+                    <i class="fas fa-envelope mr-3"></i> sfcoba@gmail.com
                   </p>
                   <p>
-                    <i class="fas fa-phone mr-3"></i> + 01 234 567 88
+                    <i class="fas fa-phone mr-3"></i> +2348054378290
                   </p>
                   <p>
-                    <i class="fas fa-print mr-3"></i> + 01 234 567 89
+                    <i class="fas fa-print mr-3"></i> +234 (818) 518-3179
                   </p>
                 </div>
                 {/* <!-- Grid column --> */}

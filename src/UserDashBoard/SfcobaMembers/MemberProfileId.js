@@ -5,11 +5,9 @@ import { FaCheck, FaEdit, FaRegTimesCircle, FaTrash } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Loader from "../../components/Loading/Loader";
 import Message from "../../components/Message/Message";
-import CircularIndeterminate from "../../components/Loading/Progress";
-import AdminLayout from "../AdminDashboard/AdminLayout";
-import "../AdminNewsBlog/AdminViewNews.css";
-import "./UserD.css";
-const UserDetails = () => {
+
+import UserLayout from "../UserDashLayout/UserLayout";
+const MemberProfileId = () => {
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const { id } = useParams();
   const navigate = useNavigate();
@@ -39,7 +37,7 @@ const UserDetails = () => {
   }, [id]);
 
   return (
-    <AdminLayout>
+    <UserLayout>
       <h3 className="text-center mb-4 mt-4">VIEW MEMBER PROFILE </h3>
       {loading ? (
         <Loader />
@@ -196,8 +194,8 @@ const UserDetails = () => {
           </div>
         </div>
       )}
-    </AdminLayout>
+    </UserLayout>
   );
 };
 
-export default UserDetails;
+export default MemberProfileId;

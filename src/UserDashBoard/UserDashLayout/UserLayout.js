@@ -19,7 +19,7 @@ import Typography from "@mui/material/Typography";
 import "../../AdminScreens/AdminDashboard/AdminLayout.css";
 // import "../../AdminDashboard/AdminLayout.css";
 import { Card, CardActionArea, CardContent } from "@mui/material";
-import { Dropdown } from "react-bootstrap";
+import { Dropdown, Image } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillHome, AiOutlineUserAdd } from "react-icons/ai";
 import {
@@ -71,7 +71,7 @@ function UserLayout(props) {
     <div style={{ backgroundColor: "#0000CD", color: "white" }}>
       <div>
         <Link to="/" style={{ textDecoration: "none" }}>
-          <img
+          <Image
             src={localStorage.getItem("ProfilePic")}
             alt="hde"
             style={{
@@ -79,9 +79,9 @@ function UserLayout(props) {
               height: "auto",
               color: "whitesmoke",
 
-              maxHeight: "72px",
-              maxWidth: "250px",
-
+              maxHeight: "50px",
+              maxWidth: "100px",
+              objectFit: "cover",
               display: "flex",
               justifyContent: "center",
               alignItem: "center",
@@ -89,6 +89,8 @@ function UserLayout(props) {
               marginRight: "auto",
               marginTop: "20px",
             }}
+            thumbnail
+            roundedCircle
           />
         </Link>
       </div>
@@ -123,8 +125,8 @@ function UserLayout(props) {
 
                 <Dropdown.Menu className="drop-d">
                   <Dropdown.Item>
-                    <Link to="/AdminProfile" style={{ textDecoration: "none" }}>
-                      Update Profile
+                    <Link to="/userProfile" style={{ textDecoration: "none" }}>
+                      View Profile
                     </Link>
                   </Dropdown.Item>
                   <Dropdown.Item onClick={logout} style={{ color: "#00A36C" }}>
@@ -134,7 +136,105 @@ function UserLayout(props) {
               </Dropdown>
             </li>
           </div>
+          <div>
+            <li style={{ display: "flex" }}>
+              <MdAdminPanelSettings
+                style={{
+                  fontSize: "25px",
+                  marginTop: "37px",
+                  marginBottom: "auto",
+                }}
+              />
+              <Dropdown>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className="borde-drop"
+                  style={{
+                    backgroundColor: "#0000CD",
+                    border: "#228B22",
+                  }}
+                >
+                  Members
+                </Dropdown.Toggle>
 
+                <Dropdown.Menu className="drop-d">
+                  <Dropdown.Item>
+                    <Link to="/View-members" style={{ textDecoration: "none" }}>
+                      View Members
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
+          </div>
+          <div>
+            <li style={{ display: "flex" }}>
+              <MdAdminPanelSettings
+                style={{
+                  fontSize: "25px",
+                  marginTop: "37px",
+                  marginBottom: "auto",
+                }}
+              />
+              <Dropdown>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className="borde-drop"
+                  style={{
+                    backgroundColor: "#0000CD",
+                    border: "#228B22",
+                  }}
+                >
+                  News Blog
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className="drop-d">
+                  <Dropdown.Item>
+                    <Link
+                      to="/userDashboard"
+                      style={{ textDecoration: "none" }}
+                    >
+                      View Blogs
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
+          </div>
+          <div>
+            <li style={{ display: "flex" }}>
+              <MdAdminPanelSettings
+                style={{
+                  fontSize: "25px",
+                  marginTop: "37px",
+                  marginBottom: "auto",
+                }}
+              />
+              <Dropdown>
+                <Dropdown.Toggle
+                  id="dropdown-basic"
+                  className="borde-drop"
+                  style={{
+                    backgroundColor: "#0000CD",
+                    border: "#228B22",
+                  }}
+                >
+                  Announcement
+                </Dropdown.Toggle>
+
+                <Dropdown.Menu className="drop-d">
+                  <Dropdown.Item>
+                    <Link
+                      to="/View-Broadcast"
+                      style={{ textDecoration: "none" }}
+                    >
+                      View BroadCast
+                    </Link>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
+            </li>
+          </div>
           <li style={{ display: "flex" }}>
             <MdAdminPanelSettings
               style={{
@@ -156,14 +256,9 @@ function UserLayout(props) {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
-                  </Link>
-                </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link to="/ViewCalender" style={{ textDecoration: "none" }}>
+                    View SFCOBA calender
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
@@ -187,18 +282,18 @@ function UserLayout(props) {
                   border: "#228B22",
                 }}
               >
-                Business
+                Business Advert
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="drop-d">
                 <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
+                  <Link to="/createAdvert" style={{ textDecoration: "none" }}>
+                    Create Advert
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link to="/ViewAverts" style={{ textDecoration: "none" }}>
+                    View Advert
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>

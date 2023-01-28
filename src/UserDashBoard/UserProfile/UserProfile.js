@@ -1,18 +1,11 @@
-import axios, { Axios } from "axios";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Button, Container, Modal } from "react-bootstrap";
-import { FaCheck, FaEdit, FaRegTimesCircle, FaTrash } from "react-icons/fa";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import Loader from "../../components/Loading/Loader";
 import Message from "../../components/Message/Message";
-import CircularIndeterminate from "../../components/Loading/Progress";
-import AdminLayout from "../AdminDashboard/AdminLayout";
-import "../AdminNewsBlog/AdminViewNews.css";
-import "./UserD.css";
-const UserDetails = () => {
-  const isAdmin = localStorage.getItem("isAdmin") === "true";
-  const { id } = useParams();
-  const navigate = useNavigate();
+import UserLayout from "../UserDashLayout/UserLayout";
+import Loader from "../../components/Loading/Loader";
+const UserProfile = () => {
+  const userId = localStorage.getItem("userId");
   const [poster, setPoster] = useState({});
 
   const [loading, setLoading] = useState(true);
@@ -25,7 +18,7 @@ const UserDetails = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const { data } = await axios.get(
-        `http://sfcoba.herokuapp.com/api/users/${id}`
+        `http://sfcoba.herokuapp.com/api/users/${userId}`
       );
       console.log(data);
       setPoster(data);
@@ -36,11 +29,11 @@ const UserDetails = () => {
     };
 
     fetchPosts();
-  }, [id]);
+  }, [userId]);
 
   return (
-    <AdminLayout>
-      <h3 className="text-center mb-4 mt-4">VIEW MEMBER PROFILE </h3>
+    <UserLayout>
+      <h3 className="text-center mb-4 mt-4">VIEW YOUR PROFILE </h3>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -57,6 +50,17 @@ const UserDetails = () => {
                 <h2 style={{ color: "#ffffff", paddingTop: "20px" }}>
                   User Profile
                 </h2>
+                <h4 style={{ color: "#ffffff", paddingTop: "20px" }}>
+                  <button>
+                    <Link
+                      to={`/user/edithProfile/${userId}`}
+                      style={{ color: "#0505ac" }}
+                    >
+                      {" "}
+                      Edith Profile
+                    </Link>
+                  </button>
+                </h4>
               </div>
             </div>
           </div>
@@ -196,8 +200,8 @@ const UserDetails = () => {
           </div>
         </div>
       )}
-    </AdminLayout>
+    </UserLayout>
   );
 };
 
-export default UserDetails;
+export default UserProfile;

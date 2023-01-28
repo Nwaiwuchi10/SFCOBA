@@ -52,7 +52,12 @@ const AdminProfiler = () => {
                   <HiUserAdd style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Profile Settings
+                  <Link
+                    to="/admin/profile"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    Profile Settings
+                  </Link>
                 </Typography>
               </div>
             </div>
@@ -62,7 +67,12 @@ const AdminProfiler = () => {
                   <FaUserTie style={{ fontSize: "40px" }} />
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  Users
+                  <Link
+                    to="/getUsers"
+                    style={{ textDecoration: "none", color: "inherit" }}
+                  >
+                    Users
+                  </Link>
                 </Typography>
               </div>
             </div>

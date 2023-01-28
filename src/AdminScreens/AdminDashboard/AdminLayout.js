@@ -67,11 +67,12 @@ function AdminLayout(props) {
   };
 
   const drawer = (
-    <div style={{ backgroundColor: "#0000CD", color: "white" }}>
+    <div
+      style={{ backgroundColor: "#0000CD", color: "white", height: "100vh" }}
+    >
       <div>
         <Link to="/" style={{ textDecoration: "none" }}>
           <Image
-            className="rounded"
             src={localStorage.getItem("ProfilePic")}
             alt="hde"
             style={{
@@ -183,12 +184,6 @@ function AdminLayout(props) {
                       {" "}
                       <Link to="/userRole" style={{ textDecoration: "none" }}>
                         View Roles
-                      </Link>
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      {" "}
-                      <Link to="/getUsers" style={{ textDecoration: "none" }}>
-                        View Users
                       </Link>
                     </Dropdown.Item>
                   </Dropdown.Menu>
@@ -359,19 +354,18 @@ function AdminLayout(props) {
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
-                  </Link>
-                </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link
+                    to="/Viewcalender/admin"
+                    style={{ textDecoration: "none" }}
+                  >
+                    View SFCOBA calender
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </li>
+
           <li style={{ display: "flex" }}>
             <MdAdminPanelSettings
               style={{
@@ -389,52 +383,24 @@ function AdminLayout(props) {
                   border: "#228B22",
                 }}
               >
-                Tribute
+                Business Adverts
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="drop-d">
                 <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
+                  <Link
+                    to="/createAdvert/Admin"
+                    style={{ textDecoration: "none" }}
+                  >
+                    Create Advert
                   </Link>
                 </Dropdown.Item>
                 <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
-                  </Link>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </li>
-          <li style={{ display: "flex" }}>
-            <MdAdminPanelSettings
-              style={{
-                fontSize: "25px",
-                marginTop: "37px",
-                marginBottom: "auto",
-              }}
-            />
-            <Dropdown>
-              <Dropdown.Toggle
-                id="dropdown-basic"
-                className="borde-drop"
-                style={{
-                  backgroundColor: "#0000CD",
-                  border: "#228B22",
-                }}
-              >
-                Business
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="drop-d">
-                <Dropdown.Item>
-                  <Link to="/createNews" style={{ textDecoration: "none" }}>
-                    Create News
-                  </Link>
-                </Dropdown.Item>
-                <Dropdown.Item style={{ color: "#00A36C" }}>
-                  <Link to="/ViewNews" style={{ textDecoration: "none" }}>
-                    View News
+                  <Link
+                    to="/ViewAdvert/Admin"
+                    style={{ textDecoration: "none" }}
+                  >
+                    View Advert
                   </Link>
                 </Dropdown.Item>
               </Dropdown.Menu>
